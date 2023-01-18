@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\MetricaSolve.csproj": {}
+    "D:\\Gitstore\\metricaSolve\\MetricaSolve\\MetricaSolve.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\MetricaSolve.csproj": {
+    "D:\\Gitstore\\metricaSolve\\MetricaSolve\\MetricaSolve.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\MetricaSolve.csproj",
+        "projectUniqueName": "D:\\Gitstore\\metricaSolve\\MetricaSolve\\MetricaSolve.csproj",
         "projectName": "MetricaSolve",
-        "projectPath": "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\MetricaSolve.csproj",
+        "projectPath": "D:\\Gitstore\\metricaSolve\\MetricaSolve\\MetricaSolve.csproj",
         "packagesPath": "C:\\Users\\SECL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\obj\\",
+        "outputPath": "D:\\Gitstore\\metricaSolve\\MetricaSolve\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SECL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

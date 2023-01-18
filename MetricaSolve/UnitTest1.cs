@@ -33,7 +33,26 @@ namespace MetricaSolve
             driver.FindElement(By.XPath("//*[@id=\"collapseOne\"]/div/div/div/div/div/div/div[1]/b/a")).Click();
 
             Thread.Sleep(3000);
-            driver.FindElement(By.XPath("//*[@id=\"handsontable\"]/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[1]")).SendKeys("SECL");
+            var drpdwn = driver.FindElement(By
+                .XPath("//*[@id=\"handsontable\"]/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[1]"));
+            drpdwn.Click();
+            drpdwn.Click();
+            Thread.Sleep(4000);
+            drpdwn.SendKeys("SECL");
+            //driver.FindElement(By.ClassName("htAutocompleteArrow")).Click();
+            //driver.FindElement(By.ClassName("htAutocompleteArrow")).Click();
+
+
+            //drpdwn.SendKeys("SECL");
+
+            //driver.FindElement(By
+            //  .XPath("//*[@id=\"handsontable\"]/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[1]")).SendKeys("SECL");
+
+
+
+
+
+
             //driver.Close();
 
             Assert.Pass();

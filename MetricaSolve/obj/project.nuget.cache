@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "30A/WAI+u3D2199tldLBQIrY23Q08WeeCRC9xjiMhBGNmKfPdfLP7osOh6KoBnEwsQW/GXhM6vXEcY0VXKBsGQ==",
+  "dgSpecHash": "Agcn3wVrj3olBwwvrPqCOZMKLwgzra2Bql0e8z2D+jsDWL7zAgR6qtwWkpUcAjRmwgfbawWo0VuySciBkg1hqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SECL\\Desktop\\MetricaSolve\\MetricaSolve\\MetricaSolve.csproj",
+  "projectFilePath": "D:\\Gitstore\\metricaSolve\\MetricaSolve\\MetricaSolve.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SECL\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\SECL\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

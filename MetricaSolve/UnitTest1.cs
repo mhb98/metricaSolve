@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.V106.IndexedDB;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using System.Diagnostics;
 
 namespace MetricaSolve
 {
@@ -12,11 +13,11 @@ namespace MetricaSolve
         //public void Setup()
         //{
         //}
-
+        IWebDriver driver;
         [Test]
         public void Test1()
         {    
-            IWebDriver driver = new ChromeDriver();
+            driver = new ChromeDriver();
             
             driver.Navigate().GoToUrl("http://192.168.0.227:9090/Metrica/#/");
             Thread.Sleep(2000);
@@ -36,6 +37,10 @@ namespace MetricaSolve
             driver.FindElement(By.XPath("//*[@id=\"collapseOne\"]/div/div/div/div/div/div/div[1]/b/a")).Click();
 
             Thread.Sleep(3000);
+
+            findDate();
+
+
             var drpdwn = driver.FindElement(By
                 .XPath("//*[@id=\"handsontable\"]/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[1]"));
 
@@ -45,13 +50,7 @@ namespace MetricaSolve
             drpdwn.Click();
 
             Thread.Sleep(2000);
-            /*
-            var drpdwnvalue = driver
-                .FindElement(By
-                .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td"));
-            
-            drpdwnvalue.Click();
-            */
+
 
 
             var projectContainer = driver.FindElement(By
@@ -110,7 +109,7 @@ namespace MetricaSolve
             FromTimeContainer.SendKeys("9:00");
             //FromDrpdwn.Click();
             TaskDescripDrpDwn.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(2000);
             TaskDescripDrpDwn.Click();
             TaskDescripDrpDwn.Click();
 
@@ -131,16 +130,32 @@ namespace MetricaSolve
 
             ToTimeContainer.SendKeys("10:00");
             ToTimeContainer.SendKeys(Keys.ArrowRight);
-            
-            //IJavaScriptExecutor jse = (JavascriptExecutor)driver;
-            //jse.executeScript("document.getElementById('elementID').setAttribute('value', 'new value for element')");
-            //IJavaScriptExecutor j = (IJavaScriptExecutor)driver;
-            //j.ExecuteScript("document.getElementsByClassName('htAutocomplete').innerHTML ='SECL'");
-
 
             //driver.Close();
 
             Assert.Pass();
+        }
+
+    
+        public void findDate()
+        {
+            var prevDate = new DateTime(2023, 1, 15); 
+            var today = DateTime.Now;
+
+            //get difference of two dates
+            var diffOfDates = today - prevDate;
+            Console.WriteLine("Difference in Days: {0}", diffOfDates.Days);
+
+            var backBtn = driver
+                .FindElement(By
+                .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[1]/span"));
+
+            for(int x = diffOfDates.Days; x > 0; x--)
+            {
+                backBtn.Click();
+            }
+
+
         }
     }
 }

@@ -1,6 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.V106.IndexedDB;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace MetricaSolve
@@ -84,6 +85,7 @@ namespace MetricaSolve
 
             TaskDescripDrpDwn.Click();
             TaskDescripDrpDwn.Click();
+            Thread.Sleep(200);
 
             var taskDescriptionContainer = driver
                 .FindElement(By
@@ -106,6 +108,11 @@ namespace MetricaSolve
                 .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/textarea"));
 
             FromTimeContainer.SendKeys("9:00");
+            //FromDrpdwn.Click();
+            TaskDescripDrpDwn.Click();
+            Thread.Sleep(20000);
+            TaskDescripDrpDwn.Click();
+            TaskDescripDrpDwn.Click();
 
 
             var ToDrpDwn = driver
@@ -114,28 +121,17 @@ namespace MetricaSolve
 
             ToDrpDwn.Click();
             ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.Click();
-            ToDrpDwn.SendKeys(Keys.Enter);
 
+            
 
             var ToTimeContainer = driver
                 .FindElement(By
                 .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/textarea"));
 
 
-            ToTimeContainer.Click();
-            ToTimeContainer.Click();
-
-
+            ToTimeContainer.SendKeys("10:00");
+            ToTimeContainer.SendKeys(Keys.ArrowRight);
+            
             //IJavaScriptExecutor jse = (JavascriptExecutor)driver;
             //jse.executeScript("document.getElementById('elementID').setAttribute('value', 'new value for element')");
             //IJavaScriptExecutor j = (IJavaScriptExecutor)driver;

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMetrica", "RegexMetrica\RegexMetrica.csproj", "{DFB80C58-608B-430F-A1C8-47CC4455E37E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFB80C58-608B-430F-A1C8-47CC4455E37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB80C58-608B-430F-A1C8-47CC4455E37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB80C58-608B-430F-A1C8-47CC4455E37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB80C58-608B-430F-A1C8-47CC4455E37E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2108FA8-3DC0-45A7-8333-B809D1FBBF82}
+	EndGlobalSection
+EndGlobal

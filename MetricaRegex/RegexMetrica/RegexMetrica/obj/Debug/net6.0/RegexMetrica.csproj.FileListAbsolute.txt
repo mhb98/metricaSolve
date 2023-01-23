@@ -1,0 +1,15 @@
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\bin\Debug\net6.0\RegexMetrica.exe
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\bin\Debug\net6.0\RegexMetrica.deps.json
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\bin\Debug\net6.0\RegexMetrica.runtimeconfig.json
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\bin\Debug\net6.0\RegexMetrica.dll
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\bin\Debug\net6.0\RegexMetrica.pdb
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.csproj.AssemblyReference.cache
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.AssemblyInfoInputs.cache
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.AssemblyInfo.cs
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.csproj.CoreCompileInputs.cache
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.dll
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\refint\RegexMetrica.dll
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.pdb
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\RegexMetrica.genruntimeconfig.cache
+C:\Users\SECL\source\repos\RegexMetrica\RegexMetrica\obj\Debug\net6.0\ref\RegexMetrica.dll

@@ -4,18 +4,18 @@ using OpenQA.Selenium.DevTools.V106.IndexedDB;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Text;
+using NUnit.Framework.Internal;
+using System.Runtime.InteropServices;
 
 namespace MetricaSolve
 {
     public class Tests
     {
-        //[SetUp]
-        //public void Setup()
-        //{
-        //}
         IWebDriver driver;
-        [Test]
-        public void Test1()
+        // List<WorkUpdate> workUpdate;
+        public void Test1(WorkUpdate workUpdateList)
         {    
             driver = new ChromeDriver();
             
@@ -38,7 +38,8 @@ namespace MetricaSolve
 
             Thread.Sleep(3000);
 
-            findDate();
+            findDate(workUpdateList.Date);
+            
 
 
             var drpdwn = driver.FindElement(By
@@ -90,8 +91,9 @@ namespace MetricaSolve
                 .FindElement(By
                 .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/textarea"));
 
-            taskDescriptionContainer.SendKeys("Test");
+            taskDescriptionContainer.SendKeys(workUpdateList.Work);
             taskDescriptionContainer.SendKeys(Keys.Enter);
+            Thread.Sleep(3000);
 
 
             var FromDrpdwn = driver
@@ -106,12 +108,12 @@ namespace MetricaSolve
                 .FindElement(By
                 .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/textarea"));
 
-            FromTimeContainer.SendKeys("9:00");
+            FromTimeContainer.SendKeys(workUpdateList.firstTime);
             //FromDrpdwn.Click();
             TaskDescripDrpDwn.Click();
             Thread.Sleep(2000);
-            TaskDescripDrpDwn.Click();
-            TaskDescripDrpDwn.Click();
+            //TaskDescripDrpDwn.Click();
+            //TaskDescripDrpDwn.Click();
 
 
             var ToDrpDwn = driver
@@ -128,8 +130,28 @@ namespace MetricaSolve
                 .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/textarea"));
 
 
-            ToTimeContainer.SendKeys("10:00");
+            ToTimeContainer.SendKeys(workUpdateList.lastTime);
             ToTimeContainer.SendKeys(Keys.ArrowRight);
+            Thread.Sleep(2000);
+
+            var saveButton = driver
+                .FindElement(By
+                .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[2]/div/div[2]/div[1]/button[2]"));
+            saveButton.Click();
+            Thread.Sleep(1000);
+
+            var submitButton = driver
+                .FindElement(By.
+                XPath("/html/body/div[9]/div/div/div[3]/button[2]"));
+            submitButton.Click();
+            Thread.Sleep(1000);
+
+            var todayButton = driver
+                .FindElement(By
+                .XPath("/html/body/div[1]/aside[2]/section[2]/div[2]/div/div/div[1]/button"));
+            todayButton.Click();
+            Thread.Sleep(1000);
+
 
             //driver.Close();
 
@@ -137,13 +159,13 @@ namespace MetricaSolve
         }
 
     
-        public void findDate()
+        public void findDate(string prevDate)
         {
-            var prevDate = new DateTime(2023, 1, 15); 
+            DateTime targetDate=Convert.ToDateTime(prevDate);
             var today = DateTime.Now;
 
             //get difference of two dates
-            var diffOfDates = today - prevDate;
+            var diffOfDates = today - targetDate;
             Console.WriteLine("Difference in Days: {0}", diffOfDates.Days);
 
             var backBtn = driver
@@ -153,9 +175,153 @@ namespace MetricaSolve
             for(int x = diffOfDates.Days; x > 0; x--)
             {
                 backBtn.Click();
+                Thread.Sleep(2000);
             }
 
 
+        }
+        //[Test]
+        //public void timeSplit()
+        //{
+        //    string text = "9:00 AM to 7:50 PM";
+
+        //    DateTime firstDateTime = DateTime.Parse(text.Substring(0, 4));
+        //    string firstTime = firstDateTime.ToString("HH:mm");
+        //    Console.WriteLine("First time: " + firstTime);
+
+        //    int startIndex = text.IndexOf(" to ") + 4;
+        //    DateTime lastDateTime = DateTime.Parse(text.Substring(startIndex));
+        //    string lastTime = lastDateTime.ToString("HH:mm");
+        //    Console.WriteLine("Last time: "+ lastTime);
+
+        //}
+
+        [Test]
+
+        public void fullRegex()
+        {
+            StringBuilder DatePattern = new StringBuilder(@"[A-z]+(ary|rch|ril|ay|ne|ly|st|ber)\s?\d{1,2}\s?(,|-)?\s?\d{4}");
+
+            StringBuilder TimePattern = new StringBuilder(@"\d{1,2}:\d{1,2}\s?(AM|am|Am|PM|Pm|pm)\s?(to|To)\s?\d{1,2}:\d{1,2}\s?(AM|am|Am|PM|Pm|pm)\s?");
+
+            StringBuilder WorkPattern = new StringBuilder(@"(\*[^*\n]+)");
+
+            string FileLoc = "C:\\Users\\SECL\\Desktop\\WorkUpdate.txt";
+
+            string[] lines = File.ReadAllLines(FileLoc);
+
+
+
+            WorkUpdate workObj;
+
+            string? workDate = null;
+            string? workUpdate = null;
+            string? workTime = null;
+
+            List<WorkUpdate> workUpdateList = new List<WorkUpdate>();
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+
+                if (Regex.IsMatch(lines[i], DatePattern.ToString()))
+                {
+                    workDate = Regex.Match(lines[i], DatePattern.ToString()).Value;
+                    // Console.WriteLine(workDate);
+
+                }
+
+                else if (Regex.IsMatch(lines[i], WorkPattern.ToString()))
+                {
+
+                    workUpdate = workUpdate
+                    + Regex.Match(lines[i], WorkPattern.ToString()).ToString();
+                    //Console.WriteLine(workUpdate);
+
+                }
+
+                else if (Regex.IsMatch(lines[i], TimePattern.ToString()))
+                {
+                    workTime = Regex.Match(lines[i], TimePattern.ToString()).Value;
+                    //Console.WriteLine(workTime);
+
+
+
+                    DateTime firstDateTime = DateTime.Parse(workTime.Substring(0, 4));
+                    string firstTime = firstDateTime.ToString("HH:mm");
+                    //Console.WriteLine("First time: " + firstTime);
+
+                    int startIndex = workTime.IndexOf(" to ") + 4;
+                    DateTime lastDateTime = DateTime.Parse(workTime.Substring(startIndex));
+                    string lastTime = lastDateTime.ToString("HH:mm");
+                    //Console.WriteLine("Last time: " + lastTime);
+
+
+
+                    workObj = new WorkUpdate(workDate, firstTime, lastTime, workUpdate);
+                    workDate = null;
+                    workTime = null;
+                    workUpdate = null;
+                    workUpdateList.Add(workObj);
+
+                }
+
+
+
+            }
+
+
+            for (int i = 0; i < workUpdateList.Count; i++)
+            {
+                Console.WriteLine(workUpdateList[i].firstTime.ToString());
+                Console.WriteLine(workUpdateList[i].lastTime.ToString());
+                Console.WriteLine(workUpdateList[i].Date.ToString());
+                Console.WriteLine(workUpdateList[i].Work.ToString());
+
+            }
+            for(int i=0; i < workUpdateList.Count; i++)
+            {
+                Test1(workUpdateList[i]);
+            }
+        }
+
+
+
+
+        //Console.WriteLine(Workupdate.ToString());   
+
+        //Console.WriteLine(Regex.Match(text,TimePattern.ToString()));
+        //Console.WriteLine(Regex.Match(text, DatePattern.ToString()));
+        //Console.WriteLine(Regex.Match(text, Work.ToString()));
+
+        //Console.WriteLine(text);
+        //String text = "";
+
+        //MatchCollection matches = Regex.Matches(text, Work.ToString());
+
+        //StringBuilder Workupdate = new StringBuilder();
+
+
+        //foreach (var match in matches)
+        //{
+        //    Console.WriteLine(match);
+
+
+        //}
+
+        public class WorkUpdate
+        {
+            public string Date;
+            public string firstTime;
+            public string lastTime;
+            public string Work;
+
+            public WorkUpdate(string date, string firsttime, string lasttime, string work)
+            {
+                Date = date;
+                firstTime = firsttime;
+                lastTime = lasttime;
+                Work = work;
+            }
         }
     }
 }

@@ -15,18 +15,19 @@ namespace MetricaSolve
     {
         IWebDriver driver;
         // List<WorkUpdate> workUpdate;
-        public void Test1(WorkUpdate workUpdateList)
-        {    
+        bool login=false;
+        public void loginCred()
+        {
             driver = new ChromeDriver();
-            
+
             driver.Navigate().GoToUrl("http://192.168.0.227:9090/Metrica/#/");
             Thread.Sleep(2000);
-           
-            IWebElement userid = driver.FindElement(By.Name("userid"));            
+
+            IWebElement userid = driver.FindElement(By.Name("userid"));
             IWebElement pass = driver.FindElement(By.Name("password"));
 
-            userid.SendKeys("mehedi.bhuiyan");
-            pass.SendKeys("sadaf@1998");
+            userid.SendKeys("asif.chowdhury");
+            pass.SendKeys("AJ8WHU3Nspec");
             Thread.Sleep(2000);
 
             IWebElement ele1 = driver.FindElement(By.ClassName("btn-Signin"));
@@ -35,13 +36,26 @@ namespace MetricaSolve
             Thread.Sleep(3000);
 
             driver.FindElement(By.XPath("//*[@id=\"collapseOne\"]/div/div/div/div/div/div/div[1]/b/a")).Click();
-
+            //My TimeSheet button
             Thread.Sleep(3000);
+            login= true;
+            
+        }
+
+
+
+        public void Test1(WorkUpdate workUpdateList)
+        {    
+            
+
+            if (login == false)
+            {
+                loginCred();
+            }
+            
 
             findDate(workUpdateList.Date);
             
-
-
             var drpdwn = driver.FindElement(By
                 .XPath("//*[@id=\"handsontable\"]/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[1]"));
 
@@ -155,7 +169,7 @@ namespace MetricaSolve
 
             //driver.Close();
 
-            Assert.Pass();
+            
         }
 
     
@@ -175,7 +189,9 @@ namespace MetricaSolve
             for(int x = diffOfDates.Days; x > 0; x--)
             {
                 backBtn.Click();
-                Thread.Sleep(2000);
+                
+                Thread.Sleep(1000);
+                
             }
 
 
@@ -206,7 +222,7 @@ namespace MetricaSolve
 
             StringBuilder WorkPattern = new StringBuilder(@"(\*[^*\n]+)");
 
-            string FileLoc = "C:\\Users\\SECL\\Desktop\\WorkUpdate.txt";
+            string FileLoc = "C:\\Users\\SECL\\Documents\\WorkUpdate.txt";
 
             string[] lines = File.ReadAllLines(FileLoc);
 
@@ -269,45 +285,16 @@ namespace MetricaSolve
 
             }
 
-
-            for (int i = 0; i < workUpdateList.Count; i++)
-            {
-                Console.WriteLine(workUpdateList[i].firstTime.ToString());
-                Console.WriteLine(workUpdateList[i].lastTime.ToString());
-                Console.WriteLine(workUpdateList[i].Date.ToString());
-                Console.WriteLine(workUpdateList[i].Work.ToString());
-
-            }
-            for(int i=0; i < workUpdateList.Count; i++)
-            {
-                Test1(workUpdateList[i]);
-            }
+                for(int i=0; i < workUpdateList.Count; i++)
+                {
+                    Test1(workUpdateList[i]);
+                }
         }
 
 
 
 
-        //Console.WriteLine(Workupdate.ToString());   
-
-        //Console.WriteLine(Regex.Match(text,TimePattern.ToString()));
-        //Console.WriteLine(Regex.Match(text, DatePattern.ToString()));
-        //Console.WriteLine(Regex.Match(text, Work.ToString()));
-
-        //Console.WriteLine(text);
-        //String text = "";
-
-        //MatchCollection matches = Regex.Matches(text, Work.ToString());
-
-        //StringBuilder Workupdate = new StringBuilder();
-
-
-        //foreach (var match in matches)
-        //{
-        //    Console.WriteLine(match);
-
-
-        //}
-
+       
         public class WorkUpdate
         {
             public string Date;

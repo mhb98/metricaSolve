@@ -26,8 +26,8 @@ namespace MetricaSolve
             IWebElement userid = driver.FindElement(By.Name("userid"));
             IWebElement pass = driver.FindElement(By.Name("password"));
 
-            userid.SendKeys("asif.chowdhury");
-            pass.SendKeys("AJ8WHU3Nspec");
+            userid.SendKeys("Give Your UserName");
+            pass.SendKeys("Give Your Password");
             Thread.Sleep(2000);
 
             IWebElement ele1 = driver.FindElement(By.ClassName("btn-Signin"));
